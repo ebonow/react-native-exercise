@@ -20,6 +20,7 @@ A barebones service has been provided by running `npm start` within ./server. Lo
 2. Use whichever libraries you like
 3. Take 1-2 hours on it
 4. Document your assumptions, describe what else would need to be done to make it "production-ready."
+5. Send us a link to your git repo.
 
 ### What We Are Looking For
 
