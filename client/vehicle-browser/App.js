@@ -1,23 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import {Text} from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
+import VehicleDetails from './components/VehicleDetails';
+import VehicleList from './components/VehicleList';
+import VehicleOrdered from './components/VehicleOrdered';
+ 
+const RootStack = createStackNavigator({
+    List: {
+      screen: VehicleList
+    },
+    Details: {
+      screen: VehicleDetails
+    },
+    Ordered: {
+      screen: VehicleOrdered
+    }
+  },{
+    initialRouteName: 'List',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        padding: 10,
+        color: '#fff'
+      },
+      headerTitle: 'Vehicle Browser',
+    }
+  }
+);
+
+export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+    return <RootStack />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
