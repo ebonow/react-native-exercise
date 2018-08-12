@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import VehicleDetails from './components/VehicleDetails';
 import VehicleList from './components/VehicleList';
-import VehicleOrdered from './components/VehicleOrdered';
+import VehicleReservation from './components/VehicleReservation';
  
 const RootStack = createStackNavigator({
     List: {
@@ -13,8 +12,8 @@ const RootStack = createStackNavigator({
     Details: {
       screen: VehicleDetails
     },
-    Ordered: {
-      screen: VehicleOrdered
+    Reserved: {
+      screen: VehicleReservation
     }
   },{
     initialRouteName: 'List',

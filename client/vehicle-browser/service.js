@@ -1,38 +1,45 @@
 const apiUrl = 'http://192.168.2.102:3000';
 
 export function getVehicles() {
-    const url = apiUrl + '/vehicles';
-
-    return getJson(url);
+    return getJson(apiUrl + '/vehicles');
 }
 
 export function getVehicleDetails(id) {
-    const url = apiUrl + '/vehicles/' + id;
+    return getJson(apiUrl + '/vehicles/' + id);
+}
+
+export function reserveVehicle(id) {
+    const data = { vehicleId: id };
+
+    return post(apiUrl + '/reserve', data)
+        .then(resp => ({
+            orderPlacedAt: resp.orderPlacedAt, 
+            error: (resp.validationError || resp.error)
+        }));
+}
+
+const validateResponse = (resp) => {
+    if (!resp.ok) throw Error(resp.statusText);
     
-    return getJson(url);
-}
-
-export function orderVehicle(req) {
-    const url = apiUrl + '/reserve';
-
-    return post(url, req);
-}
-
-const handleErrors = (resp) => {
-    if (!resp.ok) {
-        throw Error(resp.statusText);
-    }
     return resp.json();
 }
 
-export function test() {
-    const url = apiUrl + '/test';
-    return getJson(url);
-}
+const handleErrors = (error) => ({error: error.message});
 
 const getJson = (url) => fetch(url)
-    .then(handleErrors)
-    .catch(error=>({error: url + ': ' + error.message}));
+    .then(validateResponse)
+    .catch(handleErrors);
 
-
-const post = (url, req) => {}
+const post = (url, data) => {
+    const req = {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+    return fetch(url, req)
+        .then(validateResponse)
+        .catch(handleErrors);
+}
