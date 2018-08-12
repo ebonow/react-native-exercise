@@ -32,7 +32,6 @@ export function test() {
 
 const getJson = (url) => fetch(url)
     .then(handleErrors)
-    .then(json=>(console.log(json) || json))
     .catch(error=>({error: url + ': ' + error.message}));
 
 

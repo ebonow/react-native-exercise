@@ -20,11 +20,11 @@ const RootStack = createStackNavigator({
     initialRouteName: 'List',
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#f4511e'
+        backgroundColor: '#346094'
       },
       headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
+      headerTitleStyle: { 
+        fontWeight: '100',
         padding: 10,
         color: '#fff'
       },
