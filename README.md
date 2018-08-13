@@ -87,5 +87,45 @@ My last to do's will be cleanup for deployment including:
 2. Change api url
 3. Make the course code accessible to the Expo api for demo
 
+
+## Fifth checkin
+I created a node js server instance remotely to make the project accessible for demo. I updated the appi url in the service and everything worked.
+
+After that I went digging into Expo's website and found that I could easily upload my project from git to run a simulator from the web using Snack. I'm a bit excited to dig into other projects to see what other people have been able to create.
+
+Now that the project was demo-able remotely, I fixed the render method of the VehicleListItems so they were not recalculating the uri image on every render. I thought making this a functional component would be fine, but it might be worth investigating if a PureComponent would ease some performance issues as I do not have much experience of best practices for FlatList items and when they are re-rendered.
+
+Additionally, since the carousel images were taking a bit to load, I decided to add in a generic background image while the carousel images were loading.
+
+After some other small tweaks and cleanup, I feel this is a MVP based on the requirements.
+
+
+## To the future
+
+If I were to create this for an enterprise application, there are a few things left to take on:
+
+- Check optimization rendering performance of list items
+- Do full testing on iOS
+- Add accessibility labels to make application a11y friendly.
+- Implement better handling of cars no longer being available so they are not redirected to the details screen if it is not available. Perhaps even add in a polling service to update periodically.
+- Add a confirmation modal to make sure the user does not accidentally reserve a vehicle. 
+- Match first image of carousel with list image of carousel (althought probably less jarring if it is the same vehicle and not random ipsum vehicle images)
+- There is a small flash of content between reserving a car and going to the reservation screen. I would suggest adding a delay either to when the state is updated or even waiting a second or two before transitioning to the reservation confirmed screen.
+- The order number is simply the time stamp of when the vehicle was ordered, so yeah, maybe give them a real order number. 
+- Remove the cacheBust function from the images since this wouldn't be preferable with actual production images.
+- Add an app icon
+- Invest some time into font treatment
+- Add a splash screen
+- Remove reserved car from search list or leave for that user with a design treatment to know they already have it booked.
+- Animate the SVG checkmark as originally intended
+- Offline capabilities and cacheing
+
 ### Takeaways
-TBD: still in development...
+
+Well, I spent more than 1-2 hours, and if it were a timed test, I failed. My experience unit testing IE had me remembering instances of a trailing slash being added automatically. With a combination of other errors and outstanding issues others had experienced, I kept looking in other places, but in the process learned a lot. 
+
+What I can say is that I truly enjoy mobile development and this was truly an opportunity to see how mature hybrid(?ish) apps have come since Phonegap and Cordova. It seems that OS fragmentation is still alive and well (as it probably should be) but I was not expecting so many small differences like border-style not working in Android.
+
+I did have a style in mind for this app but changed it since the contrast of the highlight color was not a11y friendly against a white background. Still, I think it came out fairly well.
+
+All in all, I had fun and feel comfortable developing a full mobile application from this small exercise. 
