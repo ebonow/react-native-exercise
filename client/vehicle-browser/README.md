@@ -13,4 +13,5 @@ A demo [React Native](https://github.com/facebook/react-native) application whic
 Live demo here: https://snack.expo.io/SkwtSi0SQ
 
 Or demo on your Android device using the Expo app:
+
 ![QR Code for demo](assets/qrcode.png)
