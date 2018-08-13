@@ -54,6 +54,38 @@ I added micro-dev to the server project to get better logging where I finally di
 
 Now to play more with flexPositioning, images, and navigation.  
 
+### Second Checkin
+
+It's hard to say how much a CSS background translates into styling React Native. While many style properties are supported, it's also not clear which ones are missing, don't work, or only work for one OS (text-transform & border-style come to mind). Getting images to display took a bit as static numbers are encouraged, but found out how to make them scale as needed.
+
+Adding styles aren't difficult, but it definately encourages the developer to look into new ways to organize collections of styles.
+
+Getting two columns to display in React Native took a bit, but discovered a prop on FlatList which took care of that.
+
+Thankfully, I was able to get a grid search screen without too much difficulty using some brand colors.
+
+## Third checkin
+
+For Vehicle Details, I went in three different directions trying to get an image carousel slider. After tying my hand at a few plugins without a lot of success, found that ScrollView did exactly what I needed it to do. Since the random images from the test server are all from the same source url, I added a cache busting function to add a bit more variety to the screen.
+
+It seems default Buttons don't offer much in the way of styles.
+
+Looking at differences between this app and another, I found that there was an opportunity to cache the list view image as the background image while the carousel loads.
+
+## Fourth checkin
+
+The reservation complete screen was indeed the easiest so it provided some time to do some other cleanup. While svg's don't appear to be supported by default, there was a plugin to resolve that. While I was hoping to add animation to the checkmark's stroke-dash-offset, that will be left to do for another time.
+
+I also was able to easily update the header and navigation options to provide the correct flow as one would not expect a back arrow in the header after booking a reservation. However, there is value in being able to view the vehicle details without being able to rebook, so logic was added to be able to go back to the details page with a button but to hide the reserve button to keep them from rebooking the same vehicle.
+
+While my idea of adding a background image seemed like a good idea, unfortunately, the carousel images are all random so fading in a completely new image did not make for a good UX. Perhaps there would be a way to have a better pattern matching to ensure the gallery photos match the original listing image in a different environment, but for this project with these requirements, I hardcoded it out for later. 
+
+My testing was done with limiting the results to 10. After resetting the value to 100, I discovered that the FlatList control is rerendering the list items which is causing the items to re-render. This means that the random image generator is now refiring after every scroll. The data source will need to be moved out of the renderItem prop of the FlatList.
+
+My last to do's will be cleanup for deployment including:
+1. Deploy server to Zeit Now Hosting
+2. Change api url
+3. Make the course code accessible to the Expo api for demo
 
 ### Takeaways
 TBD: still in development...
