@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableNativeFeedback } from 'react-native';
 
-export default VehicleListItem = (props) => {
+export default function VehicleListItem(props) {
   const {make, model, uri, id, price, onPress} = props;
   const vehicle = {make, model, uri, id, price};
 
