@@ -1,4 +1,4 @@
-const apiUrl = 'http://192.168.2.102:3000';
+const apiUrl = 'https://server-axcaytnuji.now.sh';
 
 export function getVehicles() {
     return getJson(apiUrl + '/vehicles');
@@ -39,6 +39,7 @@ const post = (url, data) => {
         },
         body: JSON.stringify(data)
     }
+
     return fetch(url, req)
         .then(validateResponse)
         .catch(handleErrors);

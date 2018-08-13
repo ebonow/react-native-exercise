@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, Button, Image, ScrollView, Dimensions } from 'r
 import {getVehicleDetails, reserveVehicle} from '../service.js';
 import {highRes} from '../imageHelper.js';
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,13 +15,13 @@ export default class App extends React.Component {
       make: getParam('make').toUpperCase(),
       model: getParam('model'),
       price: getParam('price').replace('.00',''),
-      bgImage: getParam('photo'),
+      bgImage: require('../assets/car.png'), //getParam('photo'),
       images: [],
       isLoading: false,
       isReserved: false
     }
 
-    this.useBgImg = false;
+    this.useBgImg = true;
   }
 
   static navigationOptions = {
@@ -73,7 +72,7 @@ export default class App extends React.Component {
         <View style={styles.slider}>
           {(this.useBgImg) && (
             <View style={styles.sliderBg}>
-              <Image source={{uri:bgImage}} style={styles.sliderImage} resizeMode="cover" />
+              <Image source={bgImage} style={styles.sliderImage} resizeMode="cover" />
             </View>
           )}
           <ScrollView
@@ -128,7 +127,8 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width,
-    height
+    height,
+    backgroundColor: '#eee'
   },
   slider: {
     height

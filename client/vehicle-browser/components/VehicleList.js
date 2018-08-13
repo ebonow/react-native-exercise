@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ActivityIndicator } from 'react-native';
 
 import VehicleListItem from './VehicleListItem.js';
 
 import {getVehicles} from '../service.js';
+import {lowRes} from '../imageHelper.js';
 
 export default class VehicleList extends Component {
   constructor(props) {
@@ -20,8 +21,12 @@ export default class VehicleList extends Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    getVehicles().then(({vehicles, error}) => {
-      this.setState({ isLoading: false, vehicles, error })
+    getVehicles().then(resp => {
+      const vehicles = resp.vehicles.map(vehicle => ({
+        uri: lowRes(vehicle.images)[0],
+        ...vehicle
+      }))
+      this.setState({ isLoading: false, vehicles, error: resp.error })
     });
   }
 
@@ -34,7 +39,7 @@ export default class VehicleList extends Component {
 
     return (
       <View style={styles.container}>
-        {!isLoading && (
+        {!isLoading ? (
           <FlatList data={vehicles} 
             keyExtractor={item=>item.id} 
             renderItem={this._toVehicleListItem} 
@@ -42,6 +47,8 @@ export default class VehicleList extends Component {
             numColumns={2}
             ListEmptyComponent={<Text>No results</Text>}
           />
+        ) : (
+          <ActivityIndicator size="large" color="#346094" />
         )}
       </View>
     );
@@ -54,8 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 10,
-    paddingBottom: 40,
+    paddingVertical: 10,
     backgroundColor: '#dfdfdf'
   },
   image: {
@@ -66,6 +72,7 @@ const styles = StyleSheet.create({
   },
   vehicleList: {
     alignItems: 'center',
-    margin: 'auto'
+    margin: 'auto',
+    paddingBottom: 40
   }
 });

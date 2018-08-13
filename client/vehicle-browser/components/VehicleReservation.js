@@ -28,8 +28,8 @@ export default class VehicleReservation extends Component {
           <Text style={[styles.text, styles.bold]}>{this.orderNumber}</Text>
         </View>
         <View style={styles.buttons}>
-          <Button title="Vehicle Details" style={styles.button} onPress={() => goBack()} />
-          <Button title="Back to Home" style={styles.button} onPress={() => popToTop()} />
+          <Button color="#346094" title="Vehicle Details" style={styles.button} onPress={() => goBack()} />
+          <Button color="#346094" title="Back to Home" style={styles.button} onPress={() => popToTop()} />
         </View>
       </View>
     );
