@@ -39,7 +39,7 @@ This is my first React Native project so I anticipate a learning curve for:
 
 4. OS Fragmentation - I doubt an hour or two would be enough to familiarize myself with the components well enough to know which OS equivelents serve the best needs so this will be as generic as possible first pass.
 
-### First Checkin
+## First Checkin
 
 Expo has been an excellent way to update and test on the device. 
 
@@ -54,7 +54,7 @@ I added micro-dev to the server project to get better logging where I finally di
 
 Now to play more with flexPositioning, images, and navigation.  
 
-### Second Checkin
+## Second Checkin
 
 It's hard to say how much a CSS background translates into styling React Native. While many style properties are supported, it's also not clear which ones are missing, don't work, or only work for one OS (text-transform & border-style come to mind). Getting images to display took a bit as static numbers are encouraged, but found out how to make them scale as needed.
 
@@ -89,6 +89,7 @@ My last to do's will be cleanup for deployment including:
 
 
 ## Fifth checkin
+
 I created a node js server instance remotely to make the project accessible for demo. I updated the appi url in the service and everything worked.
 
 After that I went digging into Expo's website and found that I could easily upload my project from git to run a simulator from the web using Snack. I'm a bit excited to dig into other projects to see what other people have been able to create.
@@ -104,6 +105,7 @@ After some other small tweaks and cleanup, I feel this is a MVP based on the req
 
 If I were to create this for an enterprise application, there are a few things left to take on:
 
+- Cleanup/organize styles... create some global standards perhaps, but interested in starategies others have used in complex applications
 - Check optimization rendering performance of list items
 - Do full testing on iOS
 - Add accessibility labels to make application a11y friendly.
