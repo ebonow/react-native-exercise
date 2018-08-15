@@ -1,8 +1,14 @@
-# React Native - Vehicle Browser
+🚗🔍 Vehicle Browser
+=====================
+React Native application to browse and reserve vehicles
 
-> Forked from: https://github.com/flexdrive/react-native-exercise
+This repo contains:
+- A node service to REST-fully serve mocked vehicle data
+- A React Native app to consume the API's. 
 
-## Given: Problem
+This application is forked with requirements and personal development notes below.
+
+### Given: Problem
 
 Create a React Native frontend with a Node (micro) backend that allows a customer to browse a list of vehicle, see vehicle details, and submit an order.
 
@@ -27,7 +33,7 @@ Create a React Native frontend with a Node (micro) backend that allows a custome
 2. Knowledge of React Native, JS or aptitude to quickly pick it up and contribute on a React Native project.
 
 
-### First Impression
+## First Impression
 
 This is my first React Native project so I anticipate a learning curve for:
 
@@ -64,7 +70,7 @@ Getting two columns to display in React Native took a bit, but discovered a prop
 
 Thankfully, I was able to get a grid search screen without too much difficulty using some brand colors.
 
-## Third checkin
+## Third Checkin
 
 For Vehicle Details, I went in three different directions trying to get an image carousel slider. After tying my hand at a few plugins without a lot of success, found that ScrollView did exactly what I needed it to do. Since the random images from the test server are all from the same source url, I added a cache busting function to add a bit more variety to the screen.
 
@@ -72,7 +78,7 @@ It seems default Buttons don't offer much in the way of styles.
 
 Looking at differences between this app and another, I found that there was an opportunity to cache the list view image as the background image while the carousel loads.
 
-## Fourth checkin
+## Fourth Checkin
 
 The reservation complete screen was indeed the easiest so it provided some time to do some other cleanup. While svg's don't appear to be supported by default, there was a plugin to resolve that. While I was hoping to add animation to the checkmark's stroke-dash-offset, that will be left to do for another time.
 
@@ -88,7 +94,7 @@ My last to do's will be cleanup for deployment including:
 3. Make the course code accessible to the Expo api for demo
 
 
-## Fifth checkin
+## Fifth Checkin
 
 I created a node js server instance remotely to make the project accessible for demo. I updated the appi url in the service and everything worked.
 
